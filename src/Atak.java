@@ -1,0 +1,13 @@
+public class Atak {
+    String name;
+    int power;
+    String type; // np. fire, water, grass, electric, normal
+    String odmianaPolska;
+
+    public Atak(String name,String odmianaPolska, int power, String type) {
+        this.name = name;
+        this.power = power;
+        this.type = type;
+        this.odmianaPolska = odmianaPolska;
+    }
+}
