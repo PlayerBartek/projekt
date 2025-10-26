@@ -1,4 +1,4 @@
-
+import java.util.concurrent.TimeUnit;
 
 public abstract class Pokemon implements Interfejs {
     protected String name;
@@ -33,20 +33,34 @@ public abstract class Pokemon implements Interfejs {
         if (opponent.hp < 0) opponent.hp = 0;
 
         System.out.println(name + " użył " + move.odmianaPolska + "!");
-        if (multiplier > 1.0) System.out.println("To było super efektywne!");
-        else if (multiplier < 1.0) System.out.println("To nie było zbyt efektywne...");
+
+        Spanie();
+
+        if (multiplier > 1.0){
+            System.out.println("To było super efektywne!");
+
+            Spanie();
+
+        }else if (multiplier < 1.0){
+            System.out.println("To nie było zbyt efektywne...");
+
+            Spanie();
+
+        }
+
         System.out.println(opponent.name + " otrzymał " + damage + " obrażeń. (" + opponent.hp + "/" + opponent.maxHp + ")");
+        Spanie();
     }
 
     protected double typeMultiplier(String attackType, String targetType) {
-        if (attackType.equals("fire") && targetType.equals("grass")) return 2.0;
-        if (attackType.equals("water") && targetType.equals("fire")) return 2.0;
-        if (attackType.equals("grass") && targetType.equals("water")) return 2.0;
-        if (attackType.equals("electric") && targetType.equals("water")) return 2.0;
-        if (attackType.equals("fire") && targetType.equals("water")) return 0.5;
-        if (attackType.equals("water") && targetType.equals("grass")) return 0.5;
-        if (attackType.equals("grass") && targetType.equals("fire")) return 0.5;
-        if (attackType.equals("electric") && targetType.equals("grass")) return 0.5;
+        if (attackType.equals("ognisty") && targetType.equals("trawiasty")) return 2.0;
+        if (attackType.equals("wodny") && targetType.equals("ognisty")) return 2.0;
+        if (attackType.equals("trawiasty") && targetType.equals("wodny")) return 2.0;
+        if (attackType.equals("elektryczny") && targetType.equals("wodny")) return 2.0;
+        if (attackType.equals("ognisty") && targetType.equals("wodny")) return 0.5;
+        if (attackType.equals("wodny") && targetType.equals("trawiasty")) return 0.5;
+        if (attackType.equals("trawiasty") && targetType.equals("ognisty")) return 0.5;
+        if (attackType.equals("elektryczny") && targetType.equals("trawiasty")) return 0.5;
 
         return 1.0;
     }
@@ -61,5 +75,14 @@ public abstract class Pokemon implements Interfejs {
         for (int i = 0; i < moves.length; i++) {
             System.out.println((i + 1) + ". " + moves[i].name + " (" + moves[i].type + ") ");
         }
+    }
+    private static void Spanie(){
+        try {
+            TimeUnit.SECONDS.sleep(1); //spanie
+        }
+        catch (InterruptedException e) {
+            System.out.println("nie tykaj mnie");
+        }
+
     }
 }

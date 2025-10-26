@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 
 public class Main {
@@ -41,7 +42,7 @@ public class Main {
                             break;
                         default:
                             System.out.println("Niepoprawny wybór. Spróbuj ponownie.");
-                            mojPokemon = new Charmander();
+                            mojPokemon = new Charmander(); //to przemyślane rozwiązanie ok?
 
                     }
                     if (poprawnyWybor) {
@@ -49,7 +50,9 @@ public class Main {
                         Pokemon[] przeciwnicy = {new Bulbasaur(), new Charmander(), new Squirtle(), new Pikachu()};
                         Pokemon przeciwnik = przeciwnicy[random.nextInt(przeciwnicy.length)];
 
+
                         System.out.println("\nNa drodze pojawił się dziki " + przeciwnik.name + "!");
+                        Spanie();
                         Walka.rozpocznij(mojPokemon, przeciwnik);
                     }
             }
@@ -59,5 +62,14 @@ public class Main {
                 scanner.nextLine();
             }
         }
+    }
+    private static void Spanie(){
+        try {
+            TimeUnit.SECONDS.sleep(1); //spanie
+        }
+        catch (InterruptedException e) {
+            System.out.println("nie tykaj mnie");
+        }
+
     }
 }
