@@ -1,7 +1,7 @@
 public class Atak {
     String name;
     int power;
-    String type; // np. fire, water, grass, electric, normal
+    String type; 
     String odmianaPolska;
 
     public Atak(String name,String odmianaPolska, int power, String type) {
